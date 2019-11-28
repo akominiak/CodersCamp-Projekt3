@@ -66,3 +66,56 @@ main .container .panel .weather {
     height: 100%;
     width: 80%;
 }
+
+.weather,
+.cities {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.weather {
+    background-image: url("/img/map_p3.png");
+    background-repeat: no-repeat;
+    background-size: 60%;
+    background-position-x: center;
+    background-position-y: center;
+}
+
+.weather div {
+    background-color: rgba(255, 255, 255, 0.5);
+    color: black;
+    border: black 1px solid;
+    border-radius: 4px;
+    padding: 5px;
+}
+
+.weather .poznan {
+    position: absolute;
+    bottom: 320px;
+    left: 455px;
+}
+
+.weather .warszawa {
+    position: absolute;
+    bottom: 315px;
+    left: 640px;
+}
+
+.weather .krakow {
+    position: absolute;
+    bottom: 130px;
+    left: 610px;
+}
+
+.weather .szczecin {
+    position: absolute;
+    top: 150px;
+    left: 380px;
+}
+
+.weather .lublin {
+    position: absolute;
+    bottom: 230px;
+    left: 710px;
+}
