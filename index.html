@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,7 +19,7 @@
         <div class="container">
             <div class="panel">
                 <div class="menu">
-                    <div class="tableForecastMenu">
+                    <div class="tableForecastMenu active">
                         <i class="far fa-building"></i>
                         <p>Szczegółowa prognoza pogody</p>
                     </div>
@@ -27,7 +28,14 @@
                         <p>Prognoza ogólna</p>
                     </div>
                 </div>
-                <div class="weather">
+                <div class="details">
+                    <div class="details-wrap">
+                        <h2>Szczegółowa prognoza pogody</h2>
+                        <input type="text" class="searchCity" cid="input" placeholder="Wpisz miasto">
+                        <ul class="suggestion"></ul>
+                    </div>
+                </div>
+                <div class="weather off">
                     <div class="poznan">o Poznań, <span class="temp" id="Poznań"></span> °C</div>
                     <div class="warszawa">o Warszawa, <span class="temp" id="Warszawa"></span> °C</div>
                     <div class="krakow">o Kraków, <span class="temp" id="Kraków"></span> °C</div>
@@ -39,5 +47,8 @@
     </main>
     <script src="js/app.js"></script>
     <script src="js/map.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/display.js"></script>
 </body>
+
 </html>
