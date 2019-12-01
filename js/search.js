@@ -11,19 +11,16 @@ fetch("https://danepubliczne.imgw.pl/api/data/synop")
     .then(resp => resp.json())
     .then(resp => cities.push(...resp));
 
-function findCity(word, city) {
+
+export function findCity(word, city) {
     return city.filter(place => {
         const regex = new RegExp(word, 'gi');
         return place.stacja.match(regex);
     })
 }
-//Funkcja, która w miejsce tekstu wyszukiwarki wstawia klikniete miasto
-function insertIntoSearching(parametr) {
-    searching.value = parametr.innerHTML;
-}
 
 
-function displayCities() {
+export function displayCities() {
     /*
     matchArray to tablica zawierająca miasta, których nazwa zawiera
     znaki wpisane w wyszukiwarce.
@@ -46,9 +43,17 @@ function displayCities() {
     if (searching.value == "") {
         suggestions.innerHTML = `<li><span class ="name">Brak wyników</span></li>`;
     }
-}
 
-searching.addEventListener('keyup', displayCities);
+    const li = [...document.querySelectorAll('ul.suggestion li span')];
+    console.log(li)
+    for (let i = 0; i < li.length; i++) {
+        li[i].addEventListener('click', function () {
+            searching.value = this.innerHTML;
+            suggestions.innerHTML = "";
+            weatherData(cities);
+        })
+    }
+}
 
 searching.addEventListener('keypress', function (e) {
     var key = e.which || e.keyCode;

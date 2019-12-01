@@ -13,11 +13,18 @@ export function weatherData(arr) {
                 icon.innerHTML = '<i class="fas fa-cloud"></i>';
             } else {
                 icon.innerHTML = '<i class="fas fa-snowflake"></i>';
-
             }
             document.querySelector('.item1').innerHTML = data.stacja; /*zwraca stacje podaną w inpucie */
-            document.querySelector('.item2').innerHTML = "Temperatura: " + data.temperatura + "&#186C"; /*zwraca temperature do podanej stacji w inpucie */
-            document.querySelector('.item3').innerHTML = "Ciśnienie: " + data.cisnienie + " hPa"; /*zwraca cisnienie do podanej stacji w inpucie */
+            if (data.temperatura != null) {
+                document.querySelector('.item2').innerHTML = "Temperatura: " + data.temperatura + "&#186C"; /*zwraca temperature do podanej stacji w inpucie */
+            } else {
+                document.querySelector('.item2').innerHTML = "Temperatura: Brak danych"
+            }
+            if (data.cisnienie != null) {
+                document.querySelector('.item3').innerHTML = "Ciśnienie: " + data.cisnienie + " hPa"; /*zwraca cisnienie do podanej stacji w inpucie */
+            } else {
+                document.querySelector('.item3').innerHTML = "Ciśnienie: Brak danych"
+            }
             document.querySelector('.item4').innerHTML = data.data_pomiaru + ", " + data.godzina_pomiaru + ":00"; /*zwraca date pomiaru */
         }
     });

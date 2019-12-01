@@ -1,7 +1,7 @@
 const topCities = ['Warszawa', 'Krak\u00f3w', 'Pozna\u0144', 'Szczecin', 'Lublin'];
 let points = [];
 
-async function getFromApi() {
+export async function getFromApi() {
     let url = `https://danepubliczne.imgw.pl/api/data/synop/`;
     await fetch(url)
         .then(resp => resp.json())
@@ -17,13 +17,13 @@ async function getFromApi() {
     displayTemperatures();
 }
 
-function displayTemperatures() {
+export function displayTemperatures() {
     for (let i = 0; i < points.length; i++) {
         insertTemperature(points[i].name, points[i].temperature);
     }
 }
 
-function insertTemperature(city, temperature) {
+export function insertTemperature(city, temperature) {
     let cityOnMap = document.getElementById(city);
     cityOnMap.innerHTML = temperature;
 }

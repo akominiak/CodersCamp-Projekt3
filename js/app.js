@@ -1,7 +1,24 @@
+import {
+    weatherData
+} from './display';
+
+import {
+    findCity,
+    displayCities,
+    insertIntoSearching
+} from './search';
+
+import {
+    getFromApi,
+    displayTemperatures,
+    insertTemperature
+} from './map';
+
 const tableMenu = document.querySelector('.tableForecastMenu');
 const mapMenu = document.querySelector('.mapForecastMenu');
 const details = document.querySelector('.details');
 const weather = document.querySelector('.weather');
+
 
 tableMenu.addEventListener('click', () => {
     tableMenu.classList.add('active');
@@ -18,3 +35,7 @@ mapMenu.addEventListener('click', () => {
 
 })
 
+const searching = document.querySelector('input.searchCity');
+searching.addEventListener('keyup', displayCities);
+
+getFromApi();
