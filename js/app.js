@@ -17,3 +17,4 @@ mapMenu.addEventListener('click', () => {
     details.classList.add('off');
 
 })
+

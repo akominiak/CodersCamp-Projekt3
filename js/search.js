@@ -1,4 +1,8 @@
-const searching = document.querySelector('.searchCity'); //Pole wyszukiwarki
+import {
+    weatherData
+} from './display';
+
+const searching = document.querySelector('input.searchCity'); //Pole wyszukiwarki
 const suggestions = document.querySelector('.suggestion'); //Pole dopasowanych miast
 
 const cities = []; //tablica, do ktorej wrzucimy dane otrzymane z APi
@@ -13,7 +17,6 @@ function findCity(word, city) {
         return place.stacja.match(regex);
     })
 }
-
 //Funkcja, która w miejsce tekstu wyszukiwarki wstawia klikniete miasto
 function insertIntoSearching(parametr) {
     searching.value = parametr.innerHTML;
@@ -26,14 +29,14 @@ function displayCities() {
     znaki wpisane w wyszukiwarce.
     Funkcja findCity to funkcja, która tworzy tą tablicę.
     */
-    const matchArray = findCity(this.value, cities);
+    const matchArray = findCity(searching.value, cities);
 
     //Poniżej następuje tworzenie listy proponowanych miast
     //Na podstawie dopasowania, które nastąpiło wyżej
     const html = matchArray.map(city => {
         return `
         <li>
-        <span class ="name" onclick="insertIntoSearching(this)" " >${city.stacja}</span>
+        <span class ="name">${city.stacja}</span>
         </li>
         `;
     }).join('');
@@ -45,5 +48,11 @@ function displayCities() {
     }
 }
 
-
 searching.addEventListener('keyup', displayCities);
+
+searching.addEventListener('keypress', function (e) {
+    var key = e.which || e.keyCode;
+    if (key === 13) {
+        weatherData(cities);
+    }
+});
